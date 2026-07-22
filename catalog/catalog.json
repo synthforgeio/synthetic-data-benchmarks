@@ -1,0 +1,2908 @@
+{
+  "$schema": "./catalog.schema.json",
+  "categories": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "description": "Primitive and structural types"
+    },
+    {
+      "id": "personal",
+      "name": "Personal",
+      "description": "Personal identifiers and contact info"
+    },
+    {
+      "id": "address",
+      "name": "Address",
+      "description": "Geographic address components"
+    },
+    {
+      "id": "geographic",
+      "name": "Geographic",
+      "description": "Coordinates, addresses, geo identifiers"
+    },
+    {
+      "id": "internet",
+      "name": "Internet",
+      "description": "Network and web identifiers"
+    },
+    {
+      "id": "commerce",
+      "name": "Commerce",
+      "description": "Payment and financial identifiers"
+    },
+    {
+      "id": "financial",
+      "name": "Financial",
+      "description": "Amounts, codes, banking identifiers"
+    },
+    {
+      "id": "medical",
+      "name": "Medical",
+      "description": "ICD-10, CPT, NDC codes"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "description": "Company / commerce identifiers"
+    },
+    {
+      "id": "temporal",
+      "name": "Temporal",
+      "description": "Times, dates, durations"
+    },
+    {
+      "id": "technical",
+      "name": "Technical",
+      "description": "Codes, identifiers, computer-system data"
+    },
+    {
+      "id": "text",
+      "name": "Text",
+      "description": "Free-form prose: words, sentences, paragraphs"
+    },
+    {
+      "id": "fantasy",
+      "name": "Fantasy",
+      "description": "RPG-style fantasy data for demos"
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware",
+      "description": "Computer hardware identifiers"
+    },
+    {
+      "id": "food",
+      "name": "Food",
+      "description": "Food and drink names"
+    },
+    {
+      "id": "measurement",
+      "name": "Measurement",
+      "description": "Physical measurements"
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "description": "Academic identifiers"
+    },
+    {
+      "id": "color",
+      "name": "Color",
+      "description": "Color names and hex values"
+    },
+    {
+      "id": "automotive",
+      "name": "Automotive",
+      "description": "Vehicle data: makes, models, VINs, plates"
+    }
+  ],
+  "types": [
+    {
+      "id": "integer",
+      "category": "basic",
+      "primitive": "integer",
+      "backend": "primitive",
+      "method": "IntegerVectorGenerator",
+      "description": "Random integer, configurable range",
+      "examples": [
+        "42",
+        "1337",
+        "999"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0,
+        "max_value": 1000000
+      }
+    },
+    {
+      "id": "float",
+      "category": "basic",
+      "primitive": "float",
+      "backend": "primitive",
+      "method": "FloatVectorGenerator",
+      "description": "Random floating-point number, configurable range and precision",
+      "examples": [
+        "42.5",
+        "133.7",
+        "999.99"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0.0,
+        "max_value": 1000.0,
+        "precision": 2
+      }
+    },
+    {
+      "id": "boolean",
+      "category": "basic",
+      "primitive": "boolean",
+      "backend": "primitive",
+      "method": "BooleanVectorGenerator",
+      "description": "True or false, with configurable probability",
+      "examples": [
+        "true",
+        "false"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 2,
+      "default_constraints": {
+        "true_probability": 0.5
+      }
+    },
+    {
+      "id": "date",
+      "category": "basic",
+      "primitive": "date",
+      "backend": "primitive",
+      "method": "DateVectorGenerator",
+      "description": "Random calendar date (YYYY-MM-DD), configurable range",
+      "examples": [
+        "2023-05-15",
+        "2021-11-08",
+        "2024-01-01"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "format": "%Y-%m-%d"
+      }
+    },
+    {
+      "id": "datetime",
+      "category": "basic",
+      "primitive": "datetime",
+      "backend": "primitive",
+      "method": "DatetimeVectorGenerator",
+      "description": "Random datetime (ISO 8601), configurable range",
+      "examples": [
+        "2023-05-15T14:30:00Z",
+        "2021-08-22T09:15:00Z"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "format": "%Y-%m-%d %H:%M:%S"
+      }
+    },
+    {
+      "id": "uuid",
+      "category": "basic",
+      "primitive": "uuid",
+      "backend": "primitive",
+      "method": "UUIDVectorGenerator",
+      "description": "Universally unique identifier (v4)",
+      "examples": [
+        "550e8400-e29b-41d4-a716-446655440000"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_length": 36,
+        "max_length": 36
+      }
+    },
+    {
+      "id": "string",
+      "category": "basic",
+      "primitive": "string",
+      "backend": "primitive",
+      "method": "StringVectorGenerator",
+      "description": "Free-form text, optionally constrained by regex or length",
+      "examples": [
+        "abc",
+        "user-123",
+        "hello world"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null
+    },
+    {
+      "id": "text",
+      "category": "basic",
+      "primitive": "string",
+      "backend": "primitive",
+      "method": "TextVectorGenerator",
+      "description": "Long-form text (paragraphs)",
+      "examples": [
+        "Lorem ipsum dolor sit amet..."
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 500
+      }
+    },
+    {
+      "id": "enum",
+      "category": "basic",
+      "primitive": "string",
+      "backend": "primitive",
+      "method": "ChoiceVectorGenerator",
+      "description": "Pick from a list of allowed values (set via constraints.choices)",
+      "examples": [
+        "active",
+        "pending",
+        "completed"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "choices": [
+          "active",
+          "pending",
+          "completed"
+        ]
+      }
+    },
+    {
+      "id": "integer_sequence",
+      "category": "basic",
+      "primitive": "integer",
+      "backend": "primitive",
+      "method": "SequenceVectorGenerator",
+      "description": "Auto-incrementing integer sequence starting from a base value",
+      "examples": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 1
+      }
+    },
+    {
+      "id": "first_name",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "first_name",
+      "description": "Person's given name",
+      "examples": [
+        "John",
+        "Maria",
+        "Ahmed",
+        "Yuki"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 2000,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "last_name",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "last_name",
+      "description": "Person's family name",
+      "examples": [
+        "Smith",
+        "Garcia",
+        "Chen",
+        "Muller"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 10000,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "full_name",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "name",
+      "description": "Full name of a person (given + family)",
+      "examples": [
+        "John Smith",
+        "Maria Garcia",
+        "Ahmed Chen"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "email",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "email",
+      "description": "Email address",
+      "examples": [
+        "john.smith@example.com",
+        "maria.garcia@test.org"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 254
+      }
+    },
+    {
+      "id": "phone_number",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "phone_number",
+      "description": "Phone number in various formats",
+      "examples": [
+        "+1-555-123-4567",
+        "(555) 987-6543"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {}
+    },
+    {
+      "id": "ssn",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "ssn",
+      "description": "Social Security Number (US format)",
+      "examples": [
+        "123-45-6789",
+        "987-65-4321"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000000,
+      "default_constraints": {
+        "min_length": 11,
+        "max_length": 11
+      }
+    },
+    {
+      "id": "license_number",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "license_number_generator",
+      "description": "Generic license / registration number (medical, professional, government). Configurable via constraints.prefix and constraints.{min,max}_length; distinct from license_plate (vehicle).",
+      "examples": [
+        "MD12345678",
+        "ABCD123456",
+        "L9876543"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 100000000,
+      "default_constraints": {
+        "min_length": 8,
+        "max_length": 12
+      }
+    },
+    {
+      "id": "street_address",
+      "category": "address",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "street_address",
+      "description": "Street address line (number + street name)",
+      "examples": [
+        "123 Main St",
+        "456 Oak Avenue",
+        "789 Elm Road"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 200
+      }
+    },
+    {
+      "id": "city",
+      "category": "address",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "city_generator",
+      "description": "Real US city name (curated; may not correlate with state column)",
+      "examples": [
+        "New York",
+        "London",
+        "Tokyo",
+        "Paris"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 10000,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "state",
+      "category": "address",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "state_generator",
+      "description": "US state abbreviation (50 states + DC, no territories)",
+      "examples": [
+        "CA",
+        "TX",
+        "NY",
+        "FL",
+        "AL",
+        "AK",
+        "AZ",
+        "AR",
+        "CO",
+        "CT",
+        "DE",
+        "GA",
+        "HI",
+        "ID",
+        "IL",
+        "IN",
+        "IA",
+        "KS",
+        "KY",
+        "LA",
+        "ME",
+        "MD",
+        "MA",
+        "MI",
+        "MN",
+        "MS",
+        "MO",
+        "MT",
+        "NE",
+        "NV",
+        "NH",
+        "NJ",
+        "NM",
+        "NC",
+        "ND",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "UT",
+        "VT",
+        "VA",
+        "WA",
+        "WV",
+        "WI",
+        "WY",
+        "DC"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 51,
+      "default_constraints": {
+        "max_length": 2
+      }
+    },
+    {
+      "id": "postal_code",
+      "category": "address",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "postal_code_generator",
+      "description": "Real US ZIP code (curated; may not correlate with state/city)",
+      "examples": [
+        "90210",
+        "10001",
+        "SW1A 1AA"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 50000,
+      "default_constraints": {
+        "max_length": 20
+      }
+    },
+    {
+      "id": "country",
+      "category": "address",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "country",
+      "description": "Country name",
+      "examples": [
+        "United States",
+        "United Kingdom",
+        "Japan",
+        "Germany"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 250,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "url",
+      "category": "internet",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "url",
+      "description": "URL or web address",
+      "examples": [
+        "https://example.com",
+        "http://test.org/path"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 2048
+      }
+    },
+    {
+      "id": "ipv4_address",
+      "category": "internet",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "ipv4",
+      "description": "IPv4 address in dotted-decimal notation",
+      "examples": [
+        "192.168.1.1",
+        "10.0.0.5",
+        "172.16.254.1"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 4000000000,
+      "default_constraints": {
+        "min_length": 7,
+        "max_length": 15
+      }
+    },
+    {
+      "id": "domain_name",
+      "category": "internet",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "domain_name",
+      "description": "Internet domain name",
+      "examples": [
+        "example.com",
+        "test.org",
+        "mysite.net"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 253
+      }
+    },
+    {
+      "id": "credit_card_number",
+      "category": "commerce",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "credit_card_number",
+      "description": "Credit card number (Luhn-valid)",
+      "examples": [
+        "4532015112830366",
+        "5425233430109903"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {}
+    },
+    {
+      "id": "age",
+      "category": "personal",
+      "primitive": "integer",
+      "backend": "custom",
+      "method": "age_generator",
+      "description": "Person's age in years (0..150)",
+      "examples": [
+        "25",
+        "42",
+        "7",
+        "88"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0,
+        "max_value": 150
+      }
+    },
+    {
+      "id": "area_code",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "area_code_generator",
+      "description": "US telephone area code (3 digits)",
+      "examples": [
+        "212",
+        "415",
+        "312",
+        "713"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 800,
+      "default_constraints": {
+        "min_length": 3,
+        "max_length": 3
+      }
+    },
+    {
+      "id": "blood_type",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "person",
+      "method": "blood_type",
+      "description": "ABO blood type with Rh factor",
+      "examples": [
+        "A+",
+        "O-",
+        "B+",
+        "AB-",
+        "A-",
+        "B-",
+        "AB+",
+        "O+"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 8
+    },
+    {
+      "id": "date_of_birth",
+      "category": "personal",
+      "primitive": "date",
+      "backend": "faker",
+      "method": "date_of_birth",
+      "description": "Date of birth for a person",
+      "examples": [
+        "1990-05-23",
+        "1975-11-08",
+        "2000-03-14"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null
+    },
+    {
+      "id": "gender",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "person",
+      "method": "gender",
+      "description": "Gender (Male / Female)",
+      "examples": [
+        "Male",
+        "Female"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 3
+    },
+    {
+      "id": "nationality",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "person",
+      "method": "nationality",
+      "description": "Nationality adjective (e.g. French, Brazilian)",
+      "examples": [
+        "French",
+        "Brazilian",
+        "Japanese",
+        "Nigerian"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 200
+    },
+    {
+      "id": "occupation",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "person",
+      "method": "occupation",
+      "description": "Job or occupation title",
+      "examples": [
+        "Software Engineer",
+        "Nurse",
+        "Teacher",
+        "Accountant"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 500
+    },
+    {
+      "id": "password",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "password",
+      "description": "Random password string",
+      "examples": [
+        "xK9#mP2!qL",
+        "Tr0ub4dor&3"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_length": 8,
+        "max_length": 128
+      }
+    },
+    {
+      "id": "prefix",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "prefix",
+      "description": "Name prefix (Mr., Mrs., Dr., etc.)",
+      "examples": [
+        "Mr.",
+        "Mrs.",
+        "Dr.",
+        "Prof."
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 8
+    },
+    {
+      "id": "suffix",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "suffix",
+      "description": "Name suffix (Jr., Sr., III, etc.)",
+      "examples": [
+        "Jr.",
+        "Sr.",
+        "III",
+        "PhD"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 9
+    },
+    {
+      "id": "username",
+      "category": "personal",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "person",
+      "method": "username",
+      "description": "Username / login handle",
+      "examples": [
+        "cool_user42",
+        "jsmith_1988",
+        "dev_wizard"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "min_length": 3,
+        "max_length": 30
+      }
+    },
+    {
+      "id": "catch_phrase",
+      "category": "business",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "catch_phrase",
+      "description": "Corporate marketing catch phrase",
+      "examples": [
+        "Open-architected multi-state concept",
+        "Synergized 24/7 capacity"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000
+    },
+    {
+      "id": "company_name",
+      "category": "business",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "company",
+      "description": "Company or organization name",
+      "examples": [
+        "Acme Corp",
+        "Henderson Group",
+        "TechNova LLC"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "department",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "department_generator",
+      "description": "Business department name",
+      "examples": [
+        "Engineering",
+        "Marketing",
+        "Human Resources",
+        "Finance"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 11
+    },
+    {
+      "id": "industry",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "industry_generator",
+      "description": "Business industry sector",
+      "examples": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Retail"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30
+    },
+    {
+      "id": "job_title",
+      "category": "business",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "job",
+      "description": "Job title or position",
+      "examples": [
+        "Software Engineer",
+        "Product Manager",
+        "Data Analyst"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 10000,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "order_id",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "order_id_generator",
+      "description": "Order identifier with ORD- prefix",
+      "examples": [
+        "ORD-123456",
+        "ORD-789012",
+        "ORD-345678"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 900000
+    },
+    {
+      "id": "product_name",
+      "category": "business",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "food",
+      "method": "dish",
+      "description": "Product name (food/goods proxy via mimesis dish)",
+      "examples": [
+        "Chicken Divan",
+        "Beef Bourguignon",
+        "Caesar Salad"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000
+    },
+    {
+      "id": "vehicle",
+      "category": "business",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "transport",
+      "method": "car",
+      "description": "Vehicle make and model",
+      "examples": [
+        "Toyota Corolla",
+        "Ford F-150",
+        "Honda Civic"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000
+    },
+    {
+      "id": "building_number",
+      "category": "geographic",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "building_number",
+      "description": "Building or house number",
+      "examples": [
+        "12",
+        "4571",
+        "99B"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 10000
+    },
+    {
+      "id": "full_address",
+      "category": "geographic",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "address",
+      "description": "Full multi-line address",
+      "examples": [
+        "123 Main St\nSpringfield, IL 62701"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 200
+      }
+    },
+    {
+      "id": "latitude",
+      "category": "geographic",
+      "primitive": "float",
+      "backend": "faker",
+      "method": "latitude",
+      "description": "Geographic latitude (-90 to 90)",
+      "examples": [
+        "-20.52",
+        "37.77",
+        "-33.87"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": -90.0,
+        "max_value": 90.0,
+        "precision": 6
+      }
+    },
+    {
+      "id": "license_plate",
+      "category": "geographic",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "license_plate",
+      "description": "Vehicle license plate number",
+      "examples": [
+        "6Y 8J2LGK",
+        "ABC-1234",
+        "XYZ 789"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 10
+      }
+    },
+    {
+      "id": "longitude",
+      "category": "geographic",
+      "primitive": "float",
+      "backend": "faker",
+      "method": "longitude",
+      "description": "Geographic longitude (-180 to 180)",
+      "examples": [
+        "-98.64",
+        "2.35",
+        "139.69"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": -180.0,
+        "max_value": 180.0,
+        "precision": 6
+      }
+    },
+    {
+      "id": "secondary_address",
+      "category": "geographic",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "secondary_address",
+      "description": "Secondary address line (apt, suite, unit)",
+      "examples": [
+        "Suite 386",
+        "Apt. 12C",
+        "Unit 4"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "bank_name",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "bank_name_generator",
+      "description": "Bank name (US institution)",
+      "examples": [
+        "JPMorgan Chase",
+        "Bank of America",
+        "Wells Fargo",
+        "Citibank"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 68,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "bank_routing_number",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "aba",
+      "description": "US ABA routing number (9 digits)",
+      "examples": [
+        "021000021",
+        "011000138",
+        "071000013",
+        "026009593"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 9
+      }
+    },
+    {
+      "id": "currency_code",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "currency_code",
+      "description": "ISO 4217 currency code",
+      "examples": [
+        "USD",
+        "EUR",
+        "JPY",
+        "GBP"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 164,
+      "default_constraints": {
+        "min_length": 3,
+        "max_length": 3
+      }
+    },
+    {
+      "id": "decimal",
+      "category": "financial",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "decimal_generator",
+      "description": "Decimal number with configurable precision",
+      "examples": [
+        "12.50",
+        "9999.99",
+        "0.01"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0.01,
+        "max_value": 1000000.0,
+        "precision": 2
+      }
+    },
+    {
+      "id": "ean",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "ean13",
+      "description": "EAN-13 barcode number",
+      "examples": [
+        "4875126923627",
+        "9780201379624"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000000,
+      "default_constraints": {
+        "min_length": 13,
+        "max_length": 13
+      }
+    },
+    {
+      "id": "iban",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "iban",
+      "description": "International Bank Account Number",
+      "examples": [
+        "GB71BSQS82003732429342",
+        "DE89370400440532013000"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_length": 15,
+        "max_length": 34
+      }
+    },
+    {
+      "id": "stock_ticker",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "stock_ticker_generator",
+      "description": "Stock ticker symbol from well-known list",
+      "examples": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "NVDA"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 20
+    },
+    {
+      "id": "swift_code",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "swift",
+      "description": "SWIFT/BIC bank identifier code",
+      "examples": [
+        "AOQAGBMX",
+        "DEUTDEDB",
+        "CHASUS33"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_length": 8,
+        "max_length": 11
+      }
+    },
+    {
+      "id": "currency_amount",
+      "category": "financial",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "currency_amount",
+      "description": "Monetary amount in a generic currency",
+      "examples": [
+        "12.50",
+        "1050.00",
+        "0.99"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0.01,
+        "max_value": 100000.0,
+        "precision": 2
+      }
+    },
+    {
+      "id": "discount_amount",
+      "category": "financial",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "discount_amount",
+      "description": "Discount amount applied to a purchase",
+      "examples": [
+        "5.00",
+        "20.00",
+        "100.00"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0.0,
+        "max_value": 1000.0,
+        "precision": 2
+      }
+    },
+    {
+      "id": "price",
+      "category": "financial",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "price",
+      "description": "Product or service price",
+      "examples": [
+        "9.99",
+        "149.95",
+        "1299.00"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0.01,
+        "max_value": 999999.99,
+        "precision": 2
+      }
+    },
+    {
+      "id": "percentage",
+      "category": "financial",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "percentage",
+      "description": "Percentage value (0 to 100)",
+      "examples": [
+        "12.50",
+        "75.00",
+        "3.14"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0.0,
+        "max_value": 100.0,
+        "precision": 2
+      }
+    },
+    {
+      "id": "tax_rate",
+      "category": "financial",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "tax_rate",
+      "description": "Tax rate as a percentage (0 to 25)",
+      "examples": [
+        "8.500",
+        "15.000",
+        "21.000"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 0.0,
+        "max_value": 25.0,
+        "precision": 3
+      }
+    },
+    {
+      "id": "future_date",
+      "category": "temporal",
+      "primitive": "date",
+      "backend": "faker",
+      "method": "future_date",
+      "description": "Date in the future (within next 365 days)",
+      "examples": [
+        "2026-08-15",
+        "2026-12-31",
+        "2027-01-05"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "format": "%Y-%m-%d",
+        "relative_days": 365
+      }
+    },
+    {
+      "id": "past_date",
+      "category": "temporal",
+      "primitive": "date",
+      "backend": "faker",
+      "method": "past_date",
+      "description": "Date in the past (within last 365 days)",
+      "examples": [
+        "2025-11-01",
+        "2025-03-22",
+        "2024-12-15"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "format": "%Y-%m-%d",
+        "relative_days": -365
+      }
+    },
+    {
+      "id": "time",
+      "category": "temporal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "time",
+      "description": "Time of day in HH:MM:SS format",
+      "examples": [
+        "07:03:03",
+        "14:30:00",
+        "23:59:59"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "format": "%H:%M:%S"
+      }
+    },
+    {
+      "id": "api_key",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "api_key_generator",
+      "description": "Stripe-style API key (sk_ + 32 alphanumeric chars)",
+      "examples": [
+        "sk_aBcDeFgHiJkLmNoPqRsTuVwXyZ012345"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_length": 35,
+        "max_length": 35
+      }
+    },
+    {
+      "id": "emoji",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "emoji",
+      "description": "Random emoji character",
+      "examples": [
+        "\ud83d\ude00",
+        "\ud83d\udd25",
+        "\u2705",
+        "\u25fc\ufe0f"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 3000
+    },
+    {
+      "id": "file_extension",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "file_extension",
+      "description": "File extension (without dot)",
+      "examples": [
+        "mp3",
+        "pdf",
+        "png",
+        "csv"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 32,
+      "default_constraints": {
+        "max_length": 10
+      }
+    },
+    {
+      "id": "hashtag",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "hashtag_generator",
+      "description": "Social media hashtag (hash + word)",
+      "examples": [
+        "#coding",
+        "#python",
+        "#data",
+        "#ai"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 20
+    },
+    {
+      "id": "http_method",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "http_method_generator",
+      "description": "HTTP request method",
+      "examples": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 7
+    },
+    {
+      "id": "image_url",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "image_url",
+      "description": "URL pointing to a placeholder image",
+      "examples": [
+        "https://picsum.photos/815/289",
+        "https://picsum.photos/400/300"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 200
+      }
+    },
+    {
+      "id": "ipv6_address",
+      "category": "internet",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "ipv6",
+      "description": "IPv6 address in colon-hex notation",
+      "examples": [
+        "498f:2be:9028:8954:fc7:341a:4e20:5b6e",
+        "::1"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000000,
+      "default_constraints": {
+        "min_length": 3,
+        "max_length": 39
+      }
+    },
+    {
+      "id": "language_code",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "language_code",
+      "description": "ISO 639-1 language code",
+      "examples": [
+        "en",
+        "fr",
+        "de",
+        "uz"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 182,
+      "default_constraints": {
+        "min_length": 2,
+        "max_length": 5
+      }
+    },
+    {
+      "id": "locale",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "locale",
+      "description": "Locale code (language_REGION)",
+      "examples": [
+        "en_US",
+        "fr_FR",
+        "fy_NL",
+        "zh_CN"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 295,
+      "default_constraints": {
+        "max_length": 10
+      }
+    },
+    {
+      "id": "mac_address",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "mac_address",
+      "description": "MAC (hardware) address",
+      "examples": [
+        "5c:59:3a:bd:5e:18",
+        "00:11:22:33:44:55"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_length": 17,
+        "max_length": 17
+      }
+    },
+    {
+      "id": "mime_type",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "mime_type",
+      "description": "MIME content type",
+      "examples": [
+        "text/vcard",
+        "application/json",
+        "image/png"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 68,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "port",
+      "category": "technical",
+      "primitive": "integer",
+      "backend": "custom",
+      "method": "port_generator",
+      "description": "TCP/UDP port number (1 to 65535)",
+      "examples": [
+        "80",
+        "443",
+        "8080",
+        "5432"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 1,
+        "max_value": 65535
+      }
+    },
+    {
+      "id": "slug",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "slug",
+      "description": "URL-friendly slug string",
+      "examples": [
+        "including-energy",
+        "fast-data-pipeline",
+        "my-cool-post"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "user_agent",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "user_agent",
+      "description": "HTTP User-Agent string",
+      "examples": [
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) ..."
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 1000000,
+      "default_constraints": {
+        "max_length": 500
+      }
+    },
+    {
+      "id": "book_title",
+      "category": "text",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "book_title_generator",
+      "description": "Semi-realistic book title from combinatorial word patterns (legacy port)",
+      "examples": [
+        "The Silent Kingdom",
+        "Garden of Shadows",
+        "Fire and Ice",
+        "Beyond the Frozen Gate",
+        "When the Storm Falls",
+        "The Dragon's Daughter"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 500000,
+      "default_constraints": {
+        "max_length": 200,
+        "case": "title"
+      }
+    },
+    {
+      "id": "paragraph",
+      "category": "text",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "paragraph",
+      "description": "Multiple sentences forming a paragraph of prose",
+      "examples": [
+        "Air economy leader cause even. Election tax prepare claim."
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 500
+      }
+    },
+    {
+      "id": "sentence",
+      "category": "text",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "sentence",
+      "description": "A single grammatical sentence",
+      "examples": [
+        "Produce however expect as.",
+        "Quickly his any network mouth."
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 500
+      }
+    },
+    {
+      "id": "word",
+      "category": "text",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "word",
+      "description": "A single English word",
+      "examples": [
+        "want",
+        "noted",
+        "yourself",
+        "beautiful"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 50000,
+      "default_constraints": {
+        "max_length": 30
+      }
+    },
+    {
+      "id": "isbn13",
+      "category": "text",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "isbn13",
+      "description": "ISBN-13 identifier (978/979 prefix, with hyphens)",
+      "examples": [
+        "978-1-09-528475-9",
+        "979-0-306-40615-7"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_length": 17,
+        "max_length": 17
+      }
+    },
+    {
+      "id": "cpt_code",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "cpt_code_generator",
+      "description": "CPT procedure code (5-digit AMA code)",
+      "examples": [
+        "99213",
+        "99214",
+        "93000",
+        "71046"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30,
+      "default_constraints": {
+        "min_length": 5,
+        "max_length": 5
+      }
+    },
+    {
+      "id": "cpt_description",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "cpt_description_generator",
+      "description": "Human-readable CPT procedure description",
+      "examples": [
+        "Office visit, established patient, moderate complexity",
+        "Electrocardiogram, routine ECG with 12 leads"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30,
+      "default_constraints": {
+        "max_length": 200
+      }
+    },
+    {
+      "id": "ndc_code",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "ndc_code_generator",
+      "description": "NDC drug code in 5-4-2 format (labeler-product-package)",
+      "examples": [
+        "00006-0749-31",
+        "00069-0150-30",
+        "00074-3772-13"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30,
+      "default_constraints": {
+        "min_length": 13,
+        "max_length": 13
+      }
+    },
+    {
+      "id": "ndc_drug_name",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "ndc_drug_name_generator",
+      "description": "Brand-name pharmaceutical drug (e.g. Lipitor, Prozac)",
+      "examples": [
+        "Lipitor",
+        "Prozac",
+        "Augmentin",
+        "Nexium"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "ndc_generic_name",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "ndc_generic_name_generator",
+      "description": "Generic (INN) pharmaceutical name (e.g. atorvastatin)",
+      "examples": [
+        "atorvastatin",
+        "fluoxetine",
+        "amoxicillin",
+        "omeprazole"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "icd10_code",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd10_code_generator",
+      "description": "ICD-10 diagnostic code (e.g. E11.9, I10)",
+      "examples": [
+        "E11.9",
+        "I10",
+        "J18.9",
+        "F32.1"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30,
+      "default_constraints": {
+        "max_length": 10
+      }
+    },
+    {
+      "id": "icd10_description",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd10_description_generator",
+      "description": "ICD-10 diagnostic description",
+      "examples": [
+        "Type 2 diabetes mellitus without complications",
+        "Essential (primary) hypertension"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 30,
+      "default_constraints": {
+        "max_length": 300
+      }
+    },
+    {
+      "id": "hcpcs_code",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "hcpcs_code_generator",
+      "description": "HCPCS Level II code (5 characters; CMS healthcare procedure code)",
+      "examples": ["A0021", "J0013", "G0008", "L0112", "V2020"],
+      "domain_type": "countable",
+      "estimated_unique_values": 8685,
+      "default_constraints": {
+        "max_length": 5
+      }
+    },
+    {
+      "id": "hcpcs_name",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "hcpcs_name_generator",
+      "description": "HCPCS procedure descriptor (correlates with hcpcs_code when both columns exist)",
+      "examples": [
+        "Outside state ambulance serv",
+        "Esketamine, nasal spray",
+        "Admin influenza virus vac",
+        "Cranial cervical orthosis",
+        "Vision svcs frames purchases"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 8685,
+      "default_constraints": {
+        "max_length": 255
+      }
+    },
+    {
+      "id": "icd9_diagnosis_code",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd9_diagnosis_code_generator",
+      "description": "ICD-9-CM diagnosis code (3-5 chars; e.g. '25000', 'V7231', 'E8800'). Correlates with icd9_dx_desc_short and icd9_dx_desc_long when co-present.",
+      "examples": ["25000", "4019", "V7231", "E8800", "7802"],
+      "domain_type": "countable",
+      "estimated_unique_values": 14567,
+      "default_constraints": {
+        "max_length": 5
+      }
+    },
+    {
+      "id": "icd9_dx_desc_short",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd9_dx_desc_short_generator",
+      "description": "Short descriptor for an ICD-9-CM diagnosis code (~24 chars; CMS public domain). Correlates with icd9_diagnosis_code when co-present.",
+      "examples": [
+        "DMII wo cmp nt st uncntr",
+        "Hypertension NOS",
+        "Anemia NOS",
+        "Chest pain NOS",
+        "Syncope and collapse"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 14567,
+      "default_constraints": {
+        "max_length": 60
+      }
+    },
+    {
+      "id": "icd9_dx_desc_long",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd9_dx_desc_long_generator",
+      "description": "Long descriptor for an ICD-9-CM diagnosis code (~255 chars; CMS public domain). Correlates with icd9_diagnosis_code when co-present.",
+      "examples": [
+        "Diabetes mellitus without mention of complication, type II or unspecified type, not stated as uncontrolled",
+        "Unspecified essential hypertension",
+        "Anaemia, unspecified",
+        "Chest pain, unspecified",
+        "Syncope and collapse"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 14567,
+      "default_constraints": {
+        "max_length": 300
+      }
+    },
+    {
+      "id": "icd9_procedure_code",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd9_procedure_code_generator",
+      "description": "ICD-9-CM procedure code (2-4 chars; e.g. '8151', '3891'). Correlates with icd9_proc_desc_short and icd9_proc_desc_long when co-present.",
+      "examples": ["8151", "3891", "0010", "9904", "4111"],
+      "domain_type": "countable",
+      "estimated_unique_values": 3882,
+      "default_constraints": {
+        "max_length": 4
+      }
+    },
+    {
+      "id": "icd9_proc_desc_short",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd9_proc_desc_short_generator",
+      "description": "Short descriptor for an ICD-9-CM procedure code (~28 chars; CMS public domain). Correlates with icd9_procedure_code when co-present.",
+      "examples": [
+        "Total knee replacement",
+        "Transf packed cells",
+        "Implant chemothera agent",
+        "Venous catheter NEC",
+        "Endarterectomy NEC"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 3882,
+      "default_constraints": {
+        "max_length": 60
+      }
+    },
+    {
+      "id": "icd9_proc_desc_long",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "icd9_proc_desc_long_generator",
+      "description": "Long descriptor for an ICD-9-CM procedure code (CMS public domain). Correlates with icd9_procedure_code when co-present.",
+      "examples": [
+        "Total knee replacement",
+        "Transfusion of packed cells",
+        "Implantation of chemotherapeutic agent",
+        "Venous catheterization, not elsewhere classified",
+        "Endarterectomy, not elsewhere classified"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 3882,
+      "default_constraints": {
+        "max_length": 300
+      }
+    },
+    {
+      "id": "hospital_name",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "hospital_name_generator",
+      "description": "US hospital name (e.g. 'Mayo Clinic Hospital', 'Johns Hopkins Hospital'). Correlates with hospital_npi when co-present.",
+      "examples": [
+        "Southeast Health Medical Center",
+        "Johns Hopkins Hospital",
+        "Cleveland Clinic",
+        "Massachusetts General Hospital",
+        "Cedars-Sinai Medical Center"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 5432,
+      "default_constraints": {
+        "max_length": 120
+      }
+    },
+    {
+      "id": "hospital_npi",
+      "category": "medical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "hospital_npi_generator",
+      "description": "10-digit National Provider Identifier for a US hospital. Correlates with hospital_name when co-present.",
+      "examples": [
+        "1430913337",
+        "1147391024",
+        "1931965736",
+        "1256189487",
+        "1108205003"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 5432,
+      "default_constraints": {
+        "max_length": 10
+      }
+    },
+    {
+      "id": "fantasy_class",
+      "category": "fantasy",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "fantasy_class_generator",
+      "description": "RPG character class",
+      "examples": [
+        "Wizard",
+        "Warrior",
+        "Rogue",
+        "Paladin"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 15
+    },
+    {
+      "id": "fantasy_item",
+      "category": "fantasy",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "fantasy_item_generator",
+      "description": "RPG fantasy item or artifact",
+      "examples": [
+        "Sword of Truth",
+        "Healing Potion",
+        "Ring of Invisibility"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 15,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "fantasy_name",
+      "category": "fantasy",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "fantasy_name_generator",
+      "description": "Fantasy character name",
+      "examples": [
+        "Aragorn",
+        "Gandalf",
+        "Legolas",
+        "Galadriel"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 15,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "fantasy_race",
+      "category": "fantasy",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "fantasy_race_generator",
+      "description": "Fantasy race or species",
+      "examples": [
+        "Elf",
+        "Dwarf",
+        "Human",
+        "Orc",
+        "Halfling"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 15
+    },
+    {
+      "id": "fantasy_spell",
+      "category": "fantasy",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "fantasy_spell_generator",
+      "description": "Fantasy spell name",
+      "examples": [
+        "Fireball",
+        "Healing Word",
+        "Lightning Bolt",
+        "Invisibility"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 15,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "fantasy_weapon",
+      "category": "fantasy",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "fantasy_weapon_generator",
+      "description": "Fantasy weapon name",
+      "examples": [
+        "Longsword",
+        "Greatbow",
+        "Battle Axe",
+        "Dagger"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 15,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "cpu",
+      "category": "hardware",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "hardware",
+      "method": "cpu",
+      "description": "CPU model name",
+      "examples": [
+        "Apple M1 Pro",
+        "AMD Ryzen 9 5900X",
+        "Intel Core i9-12900K"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 200,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "gpu",
+      "category": "hardware",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "hardware",
+      "method": "graphics",
+      "description": "Graphics card (GPU) model name",
+      "examples": [
+        "Nvidia GTX 1080",
+        "Intel HD Graphics 615",
+        "AMD Radeon RX 6800"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 200,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "dish",
+      "category": "food",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "food",
+      "method": "dish",
+      "description": "Food dish or meal name",
+      "examples": [
+        "Chocolate cheesecake",
+        "Lorna Doone",
+        "Chicken tikka masala"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 500,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "drink",
+      "category": "food",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "food",
+      "method": "drink",
+      "description": "Beverage name",
+      "examples": [
+        "Kaoliang",
+        "Shochu",
+        "Earl Grey Tea",
+        "Espresso"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 300,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "height",
+      "category": "measurement",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "height_generator",
+      "description": "Person height in centimeters (range 140..200)",
+      "examples": [
+        "172.5",
+        "158.0",
+        "190.3"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 140.0,
+        "max_value": 200.0,
+        "precision": 1
+      }
+    },
+    {
+      "id": "weight",
+      "category": "measurement",
+      "primitive": "float",
+      "backend": "custom",
+      "method": "weight_generator",
+      "description": "Person weight in kilograms (range 40..150)",
+      "examples": [
+        "72.3",
+        "55.0",
+        "98.5"
+      ],
+      "domain_type": "continuous",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "min_value": 40.0,
+        "max_value": 150.0,
+        "precision": 1
+      }
+    },
+    {
+      "id": "academic_degree",
+      "category": "education",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "person",
+      "method": "academic_degree",
+      "description": "Academic degree level",
+      "examples": [
+        "Master",
+        "Bachelor",
+        "Doctor of Philosophy",
+        "Associate"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 3
+    },
+    {
+      "id": "university",
+      "category": "education",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "person",
+      "method": "university",
+      "description": "University or college name",
+      "examples": [
+        "Georgia Institute of Technology (Georgia Tech)",
+        "Massachusetts College of Art and Design (MassArt)"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 500,
+      "default_constraints": {
+        "max_length": 200
+      }
+    },
+    {
+      "id": "color_name",
+      "category": "color",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "text",
+      "method": "color",
+      "description": "Color name (e.g. crimson, slate, azure)",
+      "examples": [
+        "Blue",
+        "White",
+        "Crimson",
+        "Azure"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 13,
+      "default_constraints": {
+        "max_length": 30
+      }
+    },
+    {
+      "id": "hex_color",
+      "category": "color",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "text",
+      "method": "hex_color",
+      "description": "Hex color code (#rrggbb)",
+      "examples": [
+        "#4459a6",
+        "#18ff0d",
+        "#a3b2c1"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": 16777216,
+      "default_constraints": {
+        "min_length": 7,
+        "max_length": 7
+      }
+    },
+    {
+      "id": "sector",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "sector_generator",
+      "description": "High-level business sector (top of industry taxonomy)",
+      "examples": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Energy"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 10
+    },
+    {
+      "id": "sub_industry",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "sub_industry_generator",
+      "description": "Sub-industry within an industry (bottom of taxonomy; pair with sector + industry for coherent triplets)",
+      "examples": [
+        "Cloud Computing",
+        "Biotech R&D",
+        "Investment Banking"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 22
+    },
+    {
+      "id": "product_category",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "product_category_generator",
+      "description": "Top-level product category",
+      "examples": [
+        "Electronics",
+        "Apparel",
+        "Home & Garden",
+        "Food"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 10
+    },
+    {
+      "id": "product_subcategory",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "product_subcategory_generator",
+      "description": "Product subcategory (pair with product_category for coherent pairs)",
+      "examples": [
+        "Laptops",
+        "Smartphones",
+        "Footwear"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 15
+    },
+    {
+      "id": "product_type",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "product_type_generator",
+      "description": "Specific product type (bottom of taxonomy; pair with product_category + product_subcategory for coherent triplets)",
+      "examples": [
+        "Gaming Laptop",
+        "Running Shoes",
+        "Smart TV"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 23
+    },
+    {
+      "id": "vin",
+      "category": "automotive",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "vin",
+      "description": "17-character vehicle identification number",
+      "examples": [
+        "82HFE97646DEZ9600",
+        "2CTEVH1A3DM766542",
+        "R7NNG3W85PC536184",
+        "EJ6E7RHW9DH5A5255"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 17
+      }
+    },
+    {
+      "id": "ein",
+      "category": "business",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "ein",
+      "description": "US Employer Identification Number",
+      "examples": [
+        "82-4107245",
+        "27-7755439",
+        "58-4528972",
+        "98-9344066"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 10
+      }
+    },
+    {
+      "id": "md5",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "md5",
+      "description": "32-character MD5 hash",
+      "examples": [
+        "e411f3e2342294446c96e3632e36164a",
+        "574310d6a4dfafd017788923dc244d98",
+        "f4cfd961394c1b0c0ffd09979f490cc0",
+        "e56e886a0803b732f511fd7b14d80ad1"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 32
+      }
+    },
+    {
+      "id": "sha1",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "sha1",
+      "description": "40-character SHA-1 hash",
+      "examples": [
+        "7d83e32df6d4f75c1892e7b6796b39bfc1ebc357",
+        "b0b6d9e9495c4b8b9ed7c1bd15014d37b2eb0921",
+        "d1707424e7051eba4d194819fda2cb2422bb5099",
+        "82c3a8dec6205dcbba2cc239186cad415800390f"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 40
+      }
+    },
+    {
+      "id": "sha256",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "sha256",
+      "description": "64-character SHA-256 hash",
+      "examples": [
+        "f27d99246af0ecb5449773e5ca057f2b0d5e897bb3ad61b4e5210b2742bcbb90",
+        "dfe48449e9b6d3a4ba57d11e6ced06742d9df7a5fb6fe50d478a961610d10b74",
+        "6c1bfd9cdf071e2ec4b44a0b0ea3140963880c53e3997e27be5422a778a20120",
+        "f2a8ddd56bf88edbf5630a15453210b9044ba9b7f8405fb1c9c590aec0cb163e"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 64
+      }
+    },
+    {
+      "id": "http_status_code",
+      "category": "internet",
+      "primitive": "integer",
+      "backend": "faker",
+      "method": "http_status_code",
+      "description": "HTTP status code (200, 404, 500, ...)",
+      "examples": [
+        "200",
+        "302",
+        "404",
+        "500"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 500,
+      "default_constraints": {}
+    },
+    {
+      "id": "file_name",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "file_name",
+      "description": "File name with extension",
+      "examples": [
+        "evidence.csv",
+        "size.gif",
+        "skin.mov",
+        "water.webm"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 255
+      }
+    },
+    {
+      "id": "tld",
+      "category": "internet",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "tld",
+      "description": "Top-level domain (com, org, io, ...)",
+      "examples": [
+        "com",
+        "org",
+        "net",
+        "io"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 5,
+      "default_constraints": {
+        "max_length": 10
+      }
+    },
+    {
+      "id": "isbn10",
+      "category": "text",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "isbn10",
+      "description": "10-digit ISBN (legacy format)",
+      "examples": [
+        "1-101-22691-9",
+        "1-9784-8018-0",
+        "1-146-27048-8",
+        "0-489-32528-9"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 13
+      }
+    },
+    {
+      "id": "country_code",
+      "category": "geographic",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "country_code",
+      "description": "2-letter ISO 3166 country code",
+      "examples": [
+        "US",
+        "DE",
+        "JP",
+        "BR"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 195,
+      "default_constraints": {
+        "min_length": 2,
+        "max_length": 2
+      }
+    },
+    {
+      "id": "timezone",
+      "category": "temporal",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "timezone",
+      "description": "IANA timezone (e.g. America/New_York)",
+      "examples": [
+        "Africa/Kigali",
+        "Africa/Brazzaville",
+        "Asia/Pyongyang",
+        "Europe/Sofia"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 329,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "credit_card_provider",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "credit_card_provider",
+      "description": "Card network name (Visa, Mastercard, ...)",
+      "examples": [
+        "Visa",
+        "Mastercard",
+        "American Express",
+        "Discover"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 10,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "buzzword",
+      "category": "business",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "bs",
+      "description": "Business buzzword sentence",
+      "examples": [
+        "synthesize innovative users",
+        "revolutionize end-to-end channels",
+        "repurpose collaborative schemas",
+        "leverage back-end deliverables"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 200
+      }
+    },
+    {
+      "id": "state_abbr",
+      "category": "geographic",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "state_abbr",
+      "description": "2-letter US state abbreviation",
+      "examples": [
+        "CA",
+        "NY",
+        "TX",
+        "IL"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 59,
+      "default_constraints": {
+        "min_length": 2,
+        "max_length": 2
+      }
+    },
+    {
+      "id": "street_name",
+      "category": "address",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "street_name",
+      "description": "Street name without number",
+      "examples": [
+        "Jennifer Locks",
+        "Kim Path",
+        "Martinez Fork",
+        "Matthew Radial"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "street_suffix",
+      "category": "address",
+      "primitive": "string",
+      "backend": "faker",
+      "method": "street_suffix",
+      "description": "Street suffix (St, Ave, Blvd, ...)",
+      "examples": [
+        "Plaza",
+        "Forks",
+        "Radial",
+        "Forges"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 195,
+      "default_constraints": {
+        "max_length": 20
+      }
+    },
+    {
+      "id": "programming_language",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "development",
+      "method": "programming_language",
+      "description": "Programming language name",
+      "examples": [
+        "C",
+        "AutoIt",
+        "Perl",
+        "Kotlin"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 60,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "os",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "development",
+      "method": "os",
+      "description": "Operating system name",
+      "examples": [
+        "FreeBSD",
+        "Windows 8",
+        "Lubuntu",
+        "Windows 11"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 22,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "mongodb_objectid",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "mongodb_objectid_generator",
+      "description": "24-character MongoDB ObjectID hex string",
+      "examples": [
+        "507f1f77bcf86cd799439011",
+        "5e8d3f1a9c8b4e0001234567",
+        "6123456789abcdef01234567"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 24
+      }
+    },
+    {
+      "id": "ulid",
+      "category": "technical",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "ulid_generator",
+      "description": "26-character Crockford base-32 ULID (timestamp + randomness)",
+      "examples": [
+        "01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "01BX5ZZKBKACTAV9WEVGEMMVS0",
+        "01H9Z7DYR5M8KBWX2FRPN4CGJT"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 26
+      }
+    },
+    {
+      "id": "car_model_year",
+      "category": "automotive",
+      "primitive": "integer",
+      "backend": "custom",
+      "method": "car_model_year_generator",
+      "description": "Vehicle model year, default range 1990 to current year + 1",
+      "examples": [
+        "2018",
+        "2022",
+        "1995",
+        "2024"
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 38,
+      "default_constraints": {
+        "min_value": 1990
+      }
+    },
+    {
+      "id": "car_make",
+      "category": "automotive",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "car_make_generator",
+      "description": "Vehicle manufacturer (e.g. Toyota, Ford, BMW)",
+      "examples": ["Toyota", "Ford", "BMW", "Honda"],
+      "domain_type": "finite",
+      "estimated_unique_values": 41,
+      "default_constraints": {
+        "max_length": 50
+      }
+    },
+    {
+      "id": "car_model",
+      "category": "automotive",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "car_model_generator",
+      "description": "Vehicle model name (correlates with car_make when both columns exist)",
+      "examples": ["Camry", "F-150", "3 Series", "Civic"],
+      "domain_type": "countable",
+      "estimated_unique_values": 400,
+      "default_constraints": {
+        "max_length": 80
+      }
+    },
+    {
+      "id": "slogan",
+      "category": "business",
+      "primitive": "string",
+      "backend": "custom",
+      "method": "slogan_generator",
+      "description": "Generic corporate slogan sampled from a curated list of ~80 taglines",
+      "examples": [
+        "Innovating tomorrow, today.",
+        "Quality you can trust.",
+        "Beyond expectations."
+      ],
+      "domain_type": "finite",
+      "estimated_unique_values": 80,
+      "default_constraints": {
+        "max_length": 100
+      }
+    },
+    {
+      "id": "bitcoin_address",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "payment",
+      "method": "bitcoin_address",
+      "description": "Bitcoin wallet address (P2PKH / P2SH / Bech32)",
+      "examples": [
+        "3aaXEbUwPSjOeo3J4q1rm7FfoM0CQOjtDq",
+        "1uCC0BZ8TDlT2tzBP79F9rYYMIVVbjHA0h",
+        "1PjCNLS7lyiVIO1hl0xLPNdsc0jS24Ektj",
+        "1jfZSuxSHIAyH2kT96BxODrJJ7vdC9LJTg"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 64
+      }
+    },
+    {
+      "id": "credit_card_expiration_date",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "payment",
+      "method": "credit_card_expiration_date",
+      "description": "MM/YY card expiration date",
+      "examples": [
+        "09/25",
+        "12/20",
+        "06/19",
+        "05/24"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 5
+      }
+    },
+    {
+      "id": "cvv",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "payment",
+      "method": "cvv",
+      "description": "3-digit card verification value",
+      "examples": [
+        "262",
+        "084",
+        "064",
+        "686"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 4
+      }
+    },
+    {
+      "id": "ethereum_address",
+      "category": "financial",
+      "primitive": "string",
+      "backend": "mimesis",
+      "provider": "payment",
+      "method": "ethereum_address",
+      "description": "40-hex Ethereum address (0x-prefixed)",
+      "examples": [
+        "0x2421c5d346ac72244ac098772771352f0049ec2e",
+        "0x887e48369bb891d93d663a3d508671913fa8f868",
+        "0x9398ceda7c8586f54af44528259fb276d8b3f654",
+        "0xd0b2b3785bb5e4842733296815368f9991d70d2e"
+      ],
+      "domain_type": "countable",
+      "estimated_unique_values": null,
+      "default_constraints": {
+        "max_length": 42
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "version": "1",
+  "generated_at": "2026-05-05T18:57:11.295000+00:00",
+  "synthforge_commit": "e76aa646c8364822251f94239f7961230687db7e",
+  "datasets": {
+    "adult": {
+      "dataset": {
+        "name": "adult",
+        "real_rows": 30162,
+        "target_column": "income",
+        "target_is_classification": true
+      },
+      "synthesizers": {
+        "synthforge": {
+          "fidelity": {
+            "overall": 0.5169078642019085,
+            "column_shapes": 0.5732334283795038,
+            "column_pair_trends": 0.46058230002431316
+          },
+          "utility": {
+            "logreg": {
+              "trtr": 0.902473331647749,
+              "tstr": 0.6849752918920383
+            },
+            "gbm": {
+              "trtr": 0.9160463772729053,
+              "tstr": 0.6678622839968816
+            }
+          },
+          "privacy": {
+            "dcr_p5_normalized": 18.78845207874139,
+            "nndr_median": 0.9975308577516175
+          },
+          "integrity": {
+            "constraint_validity": 1.0
+          }
+        },
+        "ctgan": {
+          "fidelity": {
+            "overall": 0.8807428773511925,
+            "column_shapes": 0.8957385672921778,
+            "column_pair_trends": 0.8657471874102071
+          },
+          "utility": {
+            "logreg": {
+              "trtr": 0.902473331647749,
+              "tstr": 0.8890182863326199
+            },
+            "gbm": {
+              "trtr": 0.9160463772729053,
+              "tstr": 0.8914770102098252
+            }
+          },
+          "privacy": {
+            "dcr_p5_normalized": 0.2782552370833797,
+            "nndr_median": 0.951010994178273
+          },
+          "integrity": {
+            "constraint_validity": 0.7285657449771236
+          }
+        }
+      }
+    },
+    "credit": {
+      "dataset": {
+        "name": "credit",
+        "real_rows": 30000,
+        "target_column": "default_payment_next_month",
+        "target_is_classification": true
+      },
+      "synthesizers": {
+        "synthforge": {
+          "fidelity": {
+            "overall": 0.6451917542701487,
+            "column_shapes": 0.6815527777777778,
+            "column_pair_trends": 0.6088307307625197
+          },
+          "utility": {
+            "logreg": {
+              "trtr": 0.7155275850834744,
+              "tstr": 0.5129695211222781
+            },
+            "gbm": {
+              "trtr": 0.7796384168407339,
+              "tstr": 0.48523155152633807
+            }
+          },
+          "privacy": {
+            "dcr_p5_normalized": 7.244526584050244,
+            "nndr_median": 0.9713849324386581
+          },
+          "integrity": {
+            "constraint_validity": 1.0
+          }
+        },
+        "ctgan": {
+          "fidelity": {
+            "overall": 0.9395841747745,
+            "column_shapes": 0.9191222222222222,
+            "column_pair_trends": 0.9600461273267779
+          },
+          "utility": {
+            "logreg": {
+              "trtr": 0.7155275850834744,
+              "tstr": 0.7050368005098749
+            },
+            "gbm": {
+              "trtr": 0.7796384168407339,
+              "tstr": 0.7564465777295641
+            }
+          },
+          "privacy": {
+            "dcr_p5_normalized": 0.37959897741812787,
+            "nndr_median": 0.9152800227672089
+          },
+          "integrity": {
+            "constraint_validity": 1.0
+          }
+        }
+      }
+    }
+  }
+}
