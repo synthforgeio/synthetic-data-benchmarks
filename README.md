@@ -15,5 +15,4 @@ reference data, metrics, and methodology only.
 >
 > Maintainer sync source in the private monorepo: `distribution/oss-synthetic-data-benchmarks/`.
 
-
 MIT. Use it, fork it, check our numbers.
